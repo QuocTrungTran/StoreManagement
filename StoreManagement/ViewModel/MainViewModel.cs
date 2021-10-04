@@ -9,9 +9,17 @@ namespace StoreManagement.ViewModel
 {
     public class MainViewModel : BaseViewModel
     {
+        public bool IsLoaded { get; set; }
         public MainViewModel()
         {
-            MessageBox.Show("asdasd");
+            
+            if (!IsLoaded)
+            {
+                IsLoaded = true;
+                LoginWindow login = new LoginWindow();
+                login.ShowDialog();
+            }
+            
         }
     }
 }
