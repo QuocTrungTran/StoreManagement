@@ -20,3 +20,5 @@ C:\Users\tttru\source\repos\StoreManagement\StoreManagement\obj\Debug\StoreManag
 C:\Users\tttru\source\repos\StoreManagement\StoreManagement\obj\Debug\StoreManagement.csproj.CopyComplete
 C:\Users\tttru\source\repos\StoreManagement\StoreManagement\obj\Debug\StoreManagement.exe
 C:\Users\tttru\source\repos\StoreManagement\StoreManagement\obj\Debug\StoreManagement.pdb
+C:\Users\tttru\source\repos\StoreManagement\StoreManagement\obj\Debug\GeneratedInternalTypeHelper.g.cs
+C:\Users\tttru\source\repos\StoreManagement\StoreManagement\obj\Debug\ResourceXAML\MainResource.baml
