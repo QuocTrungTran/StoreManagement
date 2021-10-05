@@ -70,6 +70,8 @@
                         <ColumnDefinition />
                         <ColumnDefinition />
                         <ColumnDefinition />
+                        <ColumnDefinition />
+                        <ColumnDefinition />
 
                     </Grid.ColumnDefinitions>
 
@@ -181,11 +183,24 @@
 
 
                     </Button>
+                    <Button Grid.Column="6" ToolTip="User">
+                        <Grid>
+                            <Grid.RowDefinitions>
+                                <RowDefinition />
+                                <RowDefinition />
+                            </Grid.RowDefinitions>
+
+                            <Grid Grid.Row="0">
+                                <TextBlock HorizontalAlignment="Center" Text="User" />
+                            </Grid>
+                            <Grid Grid.Row="1">
+                                <materialDesign:PackIcon HorizontalAlignment="Center" Kind="Account" />
+                            </Grid>
+
+                        </Grid>
 
 
-
-
-
+                    </Button>
 
                 </Grid>
 
