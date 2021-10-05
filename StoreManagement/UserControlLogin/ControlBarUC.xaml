@@ -1,0 +1,63 @@
+﻿<UserControl
+    x:Class="StoreManagement.UserControlLogin.ControlBarUC"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+    xmlns:i="http://schemas.microsoft.com/expression/2010/interactivity"
+    xmlns:local="clr-namespace:StoreManagement.UserControlLogin"
+    xmlns:materialDesign="http://materialdesigninxaml.net/winfx/xaml/themes"
+    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    Name="ucControlBar"
+    Tag="Login"
+    mc:Ignorable="d">
+
+    <i:Interaction.Triggers>
+        <i:EventTrigger EventName="MouseLeftButtonDown">
+            <i:InvokeCommandAction Command="{Binding MouseMoveWindowCommand}" CommandParameter="{Binding ElementName=ucControlBar}" />
+        </i:EventTrigger>
+    </i:Interaction.Triggers>
+
+    <Grid>
+        <materialDesign:ColorZone Mode="PrimaryLight">
+            <DockPanel>
+                <ToolBarTray Background="Transparent" DockPanel.Dock="Right">
+                    <ToolBar
+                        Background="Transparent"
+                        ClipToBounds="False"
+                        Style="{DynamicResource MaterialDesignToolBar}">
+
+                        <Button
+                            Command="{Binding MinimizeWindowCommand}"
+                            CommandParameter="{Binding ElementName=ucControlBar}"
+                            Content="{materialDesign:PackIcon Kind=WindowMinimize}"
+                            ToolBar.OverflowMode="AsNeeded"
+                            ToolTip="Close" />
+
+                        <Button
+                            Command="{Binding MaximizeWindowCommand}"
+                            CommandParameter="{Binding ElementName=ucControlBar}"
+                            Content="{materialDesign:PackIcon Kind=WindowMaximize}"
+                            ToolBar.OverflowMode="AsNeeded"
+                            ToolTip="Close" />
+
+                        <Button
+                            Command="{Binding CloseWindowCommand}"
+                            CommandParameter="{Binding ElementName=ucControlBar}"
+                            Content="{materialDesign:PackIcon Kind=WindowClose}"
+                            ToolBar.OverflowMode="AsNeeded"
+                            ToolTip="Close" />
+
+                    </ToolBar>
+                </ToolBarTray>
+
+                <StackPanel DockPanel.Dock="Left" Orientation="Horizontal">
+                    <ToggleButton Style="{DynamicResource MaterialDesignHamburgerToggleButton}" />
+                    <TextBlock
+                        Margin="16,0,0,0"
+                        VerticalAlignment="Center"
+                        Text="{Binding Tag, ElementName=ucControlBar}" />
+                </StackPanel>
+            </DockPanel>
+        </materialDesign:ColorZone>
+    </Grid>
+</UserControl>
