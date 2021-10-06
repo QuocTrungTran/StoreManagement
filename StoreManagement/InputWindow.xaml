@@ -1,5 +1,5 @@
 ﻿<Window
-    x:Class="StoreManagement.UnitWindow"
+    x:Class="StoreManagement.InputWindow"
     xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
     xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
     xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
@@ -7,9 +7,9 @@
     xmlns:materialDesign="http://materialdesigninxaml.net/winfx/xaml/themes"
     xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
     xmlns:usercontrollogin="clr-namespace:StoreManagement.UserControlLogin"
-    x:Name="unitWindow"
-    Title="Unit"
-    Width="400"
+    x:Name="inputWindow"
+    Title="Stock in"
+    Width="780"
     Height="450"
     Background="{DynamicResource MaterialDesignPaper}"
     FontFamily="{DynamicResource MaterialDesignFont}"
@@ -29,7 +29,7 @@
 
         </Grid.RowDefinitions>
         <Grid Grid.Row="0">
-            <usercontrollogin:ControlBarUC Tag="{Binding Title, ElementName=unitWindow}" />
+            <usercontrollogin:ControlBarUC Tag="{Binding Title, ElementName=inputWindow}" />
 
         </Grid>
 
@@ -44,14 +44,52 @@
 
             <!--  Elements binded to selected items  -->
             <materialDesign:Card Grid.Row="0" Margin="5">
-                <Grid>
+                <WrapPanel Margin="0,0,0,10">
                     <TextBox
-                        Margin="5"
+                        Margin="5,5,15,5"
                         VerticalAlignment="Center"
-                        materialDesign:HintAssist.Hint="Unit Name"
+                        materialDesign:HintAssist.Hint="Material Name"
                         Style="{StaticResource MaterialDesignFloatingHintTextBox}"
-                        Text="{Binding DisplayName, UpdateSourceTrigger=PropertyChanged}" />
-                </Grid>
+                        Text="{Binding MaterialDisplayName, UpdateSourceTrigger=PropertyChanged}" />
+
+                    <DatePicker
+                        Width="100"
+                        Margin="5,5,15,5"
+                        materialDesign:HintAssist.Hint="Date Imported"
+                        SelectedDate="{Binding DateImported, UpdateSourceTrigger=PropertyChanged}"
+                        Style="{StaticResource MaterialDesignFloatingHintDatePicker}" />
+
+                    <TextBox
+                        Margin="5,5,15,5"
+                        VerticalAlignment="Center"
+                        materialDesign:HintAssist.Hint="Quantity"
+                        Style="{StaticResource MaterialDesignFloatingHintTextBox}"
+                        Text="{Binding Count, UpdateSourceTrigger=PropertyChanged}" />
+
+                    <TextBox
+                        Margin="5,5,15,5"
+                        VerticalAlignment="Center"
+                        materialDesign:HintAssist.Hint="Imported Price"
+                        Style="{StaticResource MaterialDesignFloatingHintTextBox}"
+                        Text="{Binding ImportedPrice, UpdateSourceTrigger=PropertyChanged}" />
+
+                    <TextBox
+                        Margin="5,5,15,5"
+                        VerticalAlignment="Center"
+                        materialDesign:HintAssist.Hint="Exported Price"
+                        Style="{StaticResource MaterialDesignFloatingHintTextBox}"
+                        Text="{Binding ExportedPrice, UpdateSourceTrigger=PropertyChanged}" />
+
+                    <TextBox
+                        Margin="5,5,15,5"
+                        VerticalAlignment="Center"
+                        materialDesign:HintAssist.Hint="Status"
+                        Style="{StaticResource MaterialDesignFloatingHintTextBox}"
+                        Text="{Binding Status, UpdateSourceTrigger=PropertyChanged}" />
+
+
+
+                </WrapPanel>
             </materialDesign:Card>
 
             <materialDesign:Card Grid.Row="1" Margin="5">
@@ -71,6 +109,7 @@
                         Margin="5"
                         Command="{Binding DeleteCommand}"
                         Content="Delete" />
+
                 </WrapPanel>
             </materialDesign:Card>
 
@@ -82,8 +121,14 @@
                     <ListView ItemsSource="{Binding List}" SelectedItem="{Binding SelectedItem, Mode=OneWayToSource}">
                         <ListView.View>
                             <GridView>
-                                <GridViewColumn DisplayMemberBinding="{Binding Id}" Header="Id" />
-                                <GridViewColumn DisplayMemberBinding="{Binding DisplayName}" Header="Unit Name" />
+                                <GridViewColumn DisplayMemberBinding="{Binding Material.DisplayName}" Header="Material Name" />
+                                <GridViewColumn DisplayMemberBinding="{Binding Input.DateImported}" Header="Date Imported" />
+                                <GridViewColumn DisplayMemberBinding="{Binding Count}" Header="Quantity" />
+                                <GridViewColumn DisplayMemberBinding="{Binding ImportedPrice}" Header="Imported Price" />
+                                <GridViewColumn DisplayMemberBinding="{Binding ExportedPrice}" Header="Exported Price" />
+
+                                <GridViewColumn DisplayMemberBinding="{Binding Status}" Header="Status" />
+
                             </GridView>
                         </ListView.View>
                     </ListView>
