@@ -4,17 +4,17 @@
 winexe
 C#
 .cs
-C:\Users\tttru\source\repos\StoreManagement\StoreManagement\obj\Debug\
+C:\Users\tttru\Documents\GitHub\StoreManagement\StoreManagement\StoreManagement\obj\Debug\
 StoreManagement
 none
 false
 DEBUG;TRACE
-C:\Users\tttru\source\repos\StoreManagement\StoreManagement\App.xaml
+C:\Users\tttru\Documents\GitHub\StoreManagement\StoreManagement\StoreManagement\App.xaml
 11-376839056
-
-18-1086812438
-17-934635079
+2-1556844510
+3278733336
+22-797281606
 CustomerWindow.xaml;InputWindow.xaml;LoginWindow.xaml;MainWindow.xaml;MaterialWindow.xaml;OutputWindow.xaml;ResourceXAML\MainResource.xaml;SupplierWindow.xaml;UnitWindow.xaml;UserControlLogin\ControlBarUC.xaml;UserWindow.xaml;
 
-True
+False
 
