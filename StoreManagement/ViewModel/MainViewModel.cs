@@ -30,13 +30,31 @@ namespace StoreManagement.ViewModel
         public MainViewModel()
         {
             // display once
-            LoadedWindowCommand = new RelayCommand<object>((p) => { return true; }, (p) => {
+            LoadedWindowCommand = new RelayCommand<Window>((p) => { return true; }, (p) => {
 
-                
+                // hide main window
                 IsLoaded = true;
-                LoginWindow login = new LoginWindow();
-                login.ShowDialog();
-                
+                if (p == null)
+                {
+                    return;
+                }
+                p.Hide();
+                // after loging in, show main window
+                LoginWindow loginWindow = new LoginWindow();
+                loginWindow.ShowDialog();
+
+                if (loginWindow.DataContext == null) return;
+                var loginVM = loginWindow.DataContext as LoginViewModel;
+                if (loginVM.IsLogin)
+                {
+                    p.Show();
+
+                } 
+                else
+                {
+                    p.Close();
+                }
+
             });
 
             UnitCommand = new RelayCommand<object>((p) => { return true; }, (p) => {
