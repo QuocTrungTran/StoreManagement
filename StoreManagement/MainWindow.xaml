@@ -11,7 +11,7 @@
     Name="mainWindow"
     Title="MainWindow"
     Width="640"
-    Height="500"
+    Height="700"
     Background="{DynamicResource MaterialDesignPaper}"
     DataContext="{StaticResource MainVM}"
     FontFamily="{DynamicResource MaterialDesignFont}"
@@ -468,12 +468,12 @@
                             <Separator />
                         </Grid>
                         <Grid Grid.Row="2" Margin="5">
-                            <ListView>
+                            <ListView ItemsSource="{Binding UnitInStockList}">
                                 <ListView.View>
                                     <GridView>
-                                        <GridViewColumn Header="Number" />
-                                        <GridViewColumn Header="Name" />
-                                        <GridViewColumn Header="Unit In stock" />
+                                        <GridViewColumn DisplayMemberBinding="{Binding Number}" Header="Number" />
+                                        <GridViewColumn DisplayMemberBinding="{Binding Material.DisplayName}" Header="Name" />
+                                        <GridViewColumn DisplayMemberBinding="{Binding Count}" Header="Unit In stock" />
 
 
                                     </GridView>

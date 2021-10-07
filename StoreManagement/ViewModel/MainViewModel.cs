@@ -1,6 +1,7 @@
 ﻿using StoreManagement.Model;
 using System;
 using System.Collections.Generic;
+using System.Collections.ObjectModel;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -11,6 +12,10 @@ namespace StoreManagement.ViewModel
 {
     public class MainViewModel : BaseViewModel
     {
+
+        private ObservableCollection<UnitInStock> _UnitInStockList;
+        public ObservableCollection<UnitInStock> UnitInStockList { get => _UnitInStockList; set { _UnitInStockList = value; OnPropertyChanged(); } }
+
         #region prop for window loaded
         public ICommand LoadedWindowCommand { get; set; }
         public bool IsLoaded = false;
@@ -48,7 +53,7 @@ namespace StoreManagement.ViewModel
                 if (loginVM.IsLogin)
                 {
                     p.Show();
-
+                    LoadUnitInStock();
                 } 
                 else
                 {
@@ -108,6 +113,39 @@ namespace StoreManagement.ViewModel
 
 
             var a = DataProvider.Ins.DB.Users.ToList();
+        }
+
+        void LoadUnitInStock()
+        {
+            UnitInStockList = new ObservableCollection<UnitInStock>();
+            var materialList = DataProvider.Ins.DB.Materials;
+            int i = 1;
+            foreach (var item in materialList)
+            {
+                var inputList = DataProvider.Ins.DB.InputInfoes.Where(p=>p.IdMaterial == item.Id);
+                var outputList = DataProvider.Ins.DB.OutputInfoes.Where(p => p.IdMaterial == item.Id);
+
+                var sumInput = 0;
+                var sumOutput = 0;
+
+                if (inputList != null)
+                {
+                    sumInput = (int)inputList.Sum(p => p.Count);
+                }
+                if (outputList != null)
+                {
+                    sumOutput = (int)outputList.Sum(p => p.Count);
+                }
+
+                UnitInStock unitInStock = new UnitInStock();
+                unitInStock.Number = i;
+                unitInStock.Count = sumInput - sumOutput;
+                unitInStock.Material = item;
+
+                UnitInStockList.Add(unitInStock);
+
+                i++;
+            }
         }
     }
 }
