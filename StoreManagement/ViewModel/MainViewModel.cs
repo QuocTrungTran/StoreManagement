@@ -1,4 +1,5 @@
-﻿using System;
+﻿using StoreManagement.Model;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -88,7 +89,7 @@ namespace StoreManagement.ViewModel
             });
 
 
-
+            var a = DataProvider.Ins.DB.Users.ToList();
         }
     }
 }
